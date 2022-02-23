@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --ligh-red: hsl(0, 100%, 74%);
+    --ligh-green: hsl(154, 59%, 51%);
+    --purple-blue: hsl(248, 32%, 49%);
+    --dark-blue: hsl(249, 10%, 26%);
+    --grayish-blue: hsl(246, 25%, 77%);
+    --transparent-white: rgba(255,255,255, 0.8);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+    background: var(--ligh-red) url('../images/bg-intro-mobile.png') top/cover no-repeat;
+    text-align: center;
+}
+
+main {
+    margin: 0 auto;
+    margin-top: 10vh;
+    max-width: 384px;
+}
+
+.titulo {
+    color: white;
+    font-weight: 700;
+    font-size: 1.7rem;
+    padding: 0 3.1rem;
+}
+
+.sub-titulo {
+    color: var(--transparent-white);
+    padding: 0 2rem;
+    line-height: 1.5rem;
+    margin-top: 2rem;
+}
+
+.call {
+    color: var(--transparent-white);
+    background-color: var(--purple-blue);
+    border-radius: 10px;
+    line-height: 1.5rem;
+    font-weight: 400;
+    box-shadow: 0px 7px rgba(0, 0, 0, 0.2);
+    margin: 3rem 2rem 2rem 2rem;
+    padding: 1rem 3rem;
+}
+
+.call strong {
+    color: white;
+    font-weight: 600;
+}
+
+form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 7px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 2rem 0 2rem; 
+}
+
+input:first-of-type {
+    margin-top: 1.5rem;
+}
+
+.field {
+    width: 85%;
+    font-weight: 600;
+    border-radius: 5px;
+    border-width: .2px;
+    border-style: solid;
+    padding: 1rem 0;
+    margin: 0rem 0 1rem 0;
+}
+
+.input-fields {
+    padding-left: 1rem;
+    border-color: lightgray;
+    color: var(--dark-blue);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline-color: var(--purple-blue);
+    outline-width: .2px;
+    outline-style: solid;
+    color: var(--purple-blue);
+    font-weight: 700;
+}
+
+.botao {
+    background-color: var(--ligh-green);
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    box-shadow: 0px 3px rgba(19, 73, 50, 0.5);
+    cursor: pointer;
+}
+
+.form-text {
+    font-size: .7rem;
+    padding: 0 3rem;
+    color: var(--grayish-blue);
+    line-height: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-text > a {
+    color: var(--ligh-red);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.attribution {
+    color: white;
+    font-size: .8rem;
+    padding: 0 1.5rem;
+    margin-top: .8rem;
+    margin-bottom: 5vh;
+    font-weight: 500;
+}
+
+.attribution a {
+    font-weight: 800;
+    color: var(--purple-blue);
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    html {
+        height: 100vh;
+    }
+
+    main {
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        background: var(--ligh-red) url('../images/bg-intro-desktop.png') center/cover no-repeat;
+    }
+
+    main {
+        max-width: 65%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    .titulo {
+        font-size: 3rem;
+        padding: 0 2rem 0 0;
+    }
+
+    .sub-titulo {
+        padding: 0 1rem 0 0;
+        font-weight: 500;
+        line-height: 1.7rem;
+    }
+
+    .call {
+        margin: 0rem 1.5rem 2rem 1.5rem;
+        text-align: center;
+    }
+
+    form {
+       margin: 0 1.5rem;
+    }
+    
+    input:first-of-type {
+        margin-top: 3rem;
+    }
+
+    .field {
+        padding: 1.5rem 0;
+
+    }
+
+    .input-fields {
+        padding-left: 1rem;
+    }
+    
+    .form-text {
+        margin-bottom: 3rem;
+    }
+
+    footer {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 95%;
+    }
+
+    .attribution {
+        margin-bottom: 0;
+    }
+
+    .attribution a:hover {
+        text-decoration: underline 2px;
+    }
+}

@@ -1,42 +1,63 @@
 "use strict";
 
 // Elements
-const inputs = document.querySelectorAll("input");
+const form = document.querySelector("form");
+const input = document.querySelectorAll("input");
 
-const errorMsgs = Array.apply(null, Array(4));
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  checkInputs();
+});
 
-const text = [
-  "First Name cannot be empty",
-  "Last Name cannot be empty",
-  "Email cannot be empty",
-  "Password cannot be empty",
-];
+function checkInputs() {
+  input.forEach((input) => {
+    // Get the values from the inputs without whitespaces
+    const inputValue = input.value.trim();
 
-function createEventListeners(element, phrase) {
-  element.addEventListener("blur", function () {
-    if (element.value == 0) {
-      element.removeAttribute("required");
-      element.removeAttribute("placeholder");
-      element.classList.add("error");
-      element.after(phrase);
-    } else if (element.getAttribute("type") === "email" || element.value > 0) {
-      let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      phrase.textContent = "Looks like this is not an email";
-      element.classList.add("error");
-      element.after(phrase);
+    // Check if input is an email
+    if (input.getAttribute("type") === "email") {
+      // Check if email is empty or is invalid
+      if (!inputValue || !isValid(inputValue)) {
+        setErrorFor(input);
+      } else {
+        removeErrorFrom(input);
+      }
+    } else {
+      // Show error after check if input is empty
+      if (!inputValue) {
+        setErrorFor(input);
+      } else {
+        // Remove error
+        removeErrorFrom(input);
+      }
     }
-  });
-
-  element.addEventListener("focus", function () {
-    element.classList.remove("error");
-    phrase.remove();
   });
 }
 
-for (let i = 0; i < errorMsgs.length; i++) {
-  errorMsgs[i] = document.createElement("p");
-  errorMsgs[i].textContent = text[i];
-  errorMsgs[i].classList.add("error-msg");
+function setErrorFor(input) {
+  const formControl = input.parentElement; // Getting the div where input is inside;
 
-  createEventListeners(inputs[i], errorMsgs[i]);
+  // add error class
+  input.classList.add("error");
+  formControl.querySelector("small").style.opacity = 1;
+
+  if (input.getAttribute("type") === "email" && input.value != 0) {
+    formControl.querySelector("small").textContent =
+      "Looks like this is not a valid email";
+  } else {
+    formControl.querySelector("small").textContent = "Email cannot be empty";
+  }
+}
+
+function removeErrorFrom(field) {
+  field.classList.remove("error");
+  field.parentElement.querySelector("small").style.opacity = 0;
+}
+
+function isValid(email) {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
 }

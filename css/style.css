@@ -77,18 +77,27 @@ form {
   margin: 0 2rem 0 2rem;
 }
 
-input:first-of-type {
+div {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+div:first-of-type {
   margin-top: 1.5rem;
 }
 
 .field {
-  width: 85%;
+  width: 100%;
   font-weight: 600;
   border-radius: 5px;
   border-width: 0.2px;
   border-style: solid;
   padding: 1rem 0;
-  margin: 0rem 0 1rem 0;
+  margin: 0;
 }
 
 .input-fields {
@@ -99,12 +108,30 @@ input:first-of-type {
   font-size: 1rem;
 }
 
+.input-fields.error {
+  border-color: var(--ligh-red);
+  color: var(--ligh-red);
+}
+
 input:focus {
   outline-color: var(--purple-blue);
   outline-width: 0.2px;
   outline-style: solid;
   color: var(--purple-blue);
   font-weight: 700;
+}
+
+input:focus::placeholder {
+  color: var(--purple-blue);
+}
+
+.input-fields.error:focus {
+  outline-color: var(--ligh-red);
+  color: var(--ligh-red);
+}
+
+.input-fields.error::placeholder {
+  color: var(--ligh-red);
 }
 
 .botao {
@@ -114,6 +141,8 @@ input:focus {
   border: none;
   box-shadow: 0px 3px rgba(19, 73, 50, 0.5);
   cursor: pointer;
+  margin-top: 1rem;
+  width: 85%;
 }
 
 .form-text {
@@ -122,12 +151,34 @@ input:focus {
   color: var(--grayish-blue);
   line-height: 1.2rem;
   margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 .form-text > a {
   color: var(--ligh-red);
   font-weight: 700;
   text-decoration: none;
+}
+
+.error {
+  background-image: url("../images/icon-error.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 95%;
+  margin-bottom: 0;
+  border-color: var(--ligh-red);
+  color: var(--ligh-red);
+}
+
+.error-msg {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--ligh-red);
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  text-align: right;
+  opacity: 0;
 }
 
 .attribution {
@@ -194,22 +245,16 @@ input:focus {
     margin: 0 1.5rem;
   }
 
-  input:first-of-type {
-    margin-top: 3rem;
+  div {
+    margin-bottom: 1rem;
+  }
+
+  .input-fields:first-of-type {
+    margin-top: 1rem;
   }
 
   .field {
     padding: 1.5rem 0;
-  }
-
-  .error {
-    background-image: url("../images/icon-error.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-position-x: 95%;
-    margin-bottom: 0;
-    border-color: var(--ligh-red);
-    color: var(--ligh-red);
   }
 
   .input-fields {
@@ -217,12 +262,7 @@ input:focus {
   }
 
   .error-msg {
-    font-size: 0.7rem;
-    font-style: italic;
-    color: var(--ligh-red);
     margin-left: 50%;
-    margin-bottom: 1.5rem;
-    margin-top: 0.5rem;
   }
 
   .botao:hover {

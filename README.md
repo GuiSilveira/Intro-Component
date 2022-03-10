@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/responsive-intro-component-using-flexbox-and-js-clientside-validation-rVlLjp4UT)
 - Live Site URL: [GitHub Pages](https://guisilveira.github.io/Intro-Component/)
 
 ## My process
